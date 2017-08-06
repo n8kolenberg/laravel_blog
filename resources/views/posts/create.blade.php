@@ -10,15 +10,20 @@
             {{csrf_field()}}
             <div class="form-group">
                 <label for="title">Title of your post: </label>
-                <input type="text" class="form-control" id="title" placeholder="What will you call your post?" name="title">
+                <input type="text" class="form-control" id="title" placeholder="What will you call your post?" name="title" >
             </div>
 
             <div class="form-group">
                 <label for="body">Post</label>
-                <textarea  class="form-control" id="body" placeholder="Start writing your post here..." name="body"></textarea>
+                <textarea  class="form-control" id="body" placeholder="Start writing your post here..." name="body" ></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Publish</button>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Publish</button>
+            </div>
+
+            @include('layouts.errors')
+
         </form>
 
     </div>
