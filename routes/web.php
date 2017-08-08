@@ -15,12 +15,19 @@ use App\Task;
 
 //Route::get('/tasks/{task}', 'TasksController@show');
 
+//View and create posts
 Route::get('/posts', 'PostsController@index');
 Route::get('/posts/create', 'PostsController@create');
 
+//Store the post after creating it
+Route::post('/posts', 'PostsController@store');
+
+//Show the individual post
 Route::get('/posts/{post}', 'PostsController@show');
 
-Route::post('/posts', 'PostsController@store');
+//Add a comment to a post
+Route::post('/posts/{post}/comments', 'CommentsController@store');
+
 
 
 

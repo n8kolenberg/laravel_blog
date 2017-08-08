@@ -27,7 +27,7 @@ class PostsController extends Controller
         If there are errors found, it will redirect to the previous page and provide
         a variable with the errors. Check create.blade.php for the errors variable implementation*/
         $this->validate(request(), [
-            'title' => 'required|min:2 ',
+            'title' => 'required|min:2',
             'body' => 'required|min:2'
         ]);
 
