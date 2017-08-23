@@ -12,11 +12,11 @@ use App\Task;
 */
 
 //Route::get('/', 'TasksController@index');
-
 //Route::get('/tasks/{task}', 'TasksController@show');
 
+
 //View and create posts
-Route::get('/posts', 'PostsController@index');
+Route::get('/', 'PostsController@index')->name('home');
 Route::get('/posts/create', 'PostsController@create');
 
 //Store the post after creating it
@@ -29,7 +29,15 @@ Route::get('/posts/{post}', 'PostsController@show');
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 
 
+//Registration
+Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
 
+//Login and Logout
+Route::get('/login', 'SessionsController@create');
+Route::post('/login', 'SessionsController@store');
+
+Route::get('/logout', 'SessionsController@destroy');
 
 //Controller => Plural => Posts
 //Eloquent Model => Singular => Post

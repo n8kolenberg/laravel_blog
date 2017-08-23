@@ -5,7 +5,9 @@
         <h1>{{$post->title}}</h1>
         <hr>
         <p>{{$post->body}}</p>
-        <p class="text-muted">Created {{$post->created_at->diffForHumans()}}</p>
+        <p class="text-muted">Created by
+            {{$post->user->name}}
+            {{$post->created_at->diffForHumans()}}</p>
         <hr>
         <ul class="list-group">
             <div class="comments">

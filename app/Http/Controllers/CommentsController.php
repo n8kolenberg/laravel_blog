@@ -31,7 +31,8 @@ class CommentsController extends Controller
         $this->validate(request(), ['body'=> 'required|min:2']);
         /*We need to add a comment to a post => this is the terminology
         that the client would normally use so it would be good to use
-        methods that are simple to understand and use the same style of wording */
+        methods that are simple to understand and use the same style of wording
+        The function addComment is therefore placed on the Post model*/
         $post->addComment(request('body'));
 
         return back();

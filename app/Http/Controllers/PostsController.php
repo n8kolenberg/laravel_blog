@@ -4,15 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PostsController extends Controller
 {
 
+    public function __construct() {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        $posts = Post::orderBy('created_at', 'desc')->get(); //You can also do Post::latest()->get();
+//        $posts = Post::orderBy('created_at', 'desc')->get(); //You can also do Post::latest()->get();
+
+        //The filter method (query scope) has been added
+        //to the Post Model
+        $posts = Post::latest()
+            ->filter(request(['month', 'year']))
+            ->get();
 
         return view('posts.index', compact('posts'));
     }
@@ -31,7 +41,10 @@ class PostsController extends Controller
             'body' => 'required|min:2'
         ]);
 
-        Post::create(request(['title', 'body']));
+//        dd(request('title'));
+        auth()->user()->publish(new Post(request(['title', 'body'])));
+
+
         //Redirect to the homepage
         return redirect('/posts');
     }
