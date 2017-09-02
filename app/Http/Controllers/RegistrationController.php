@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Welcome;
 use Illuminate\Http\Request;
 use App\User;
 
 class RegistrationController extends Controller
 {
+    public function __construct() {
+        $this->middleware('guest');
+    }
+
     public function create() {
         return view('registration.create');
     }
@@ -30,6 +35,8 @@ class RegistrationController extends Controller
         Auth::login, we would either have to escape it \ or add use Auth at the top*/
         auth()->login($user);
 
+        //Let's send an email to the user after they sign up
+        \Mail::to($user)->send(new Welcome($user));
         //Redirect to homepage
         return redirect()->home();
     }

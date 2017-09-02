@@ -32,6 +32,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        ///*When the user requests an instance of stripe..*/
+        \App::bind('\App\Billing\Stripe', function() {
+            //We return an instance of Stripe and we pass in the API key
+            return new \App\Billing\Stripe(config('services.stripe.secret'));
+        });
+
+        //If the user would like to resolve something out of the Stripe service container
+        $stripe = resolve('\App\Billing\Stripe');
+
+//        dd($stripe);
     }
 }
