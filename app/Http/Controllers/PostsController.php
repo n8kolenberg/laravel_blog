@@ -41,12 +41,13 @@ class PostsController extends Controller
             'body' => 'required|min:2'
         ]);
 
+//        dd(auth()->user()->id);
 //        dd(request('title'));
         auth()->user()->publish(new Post(request(['title', 'body'])));
 
 
         //Redirect to the homepage
-        return redirect('/posts');
+        return redirect()->home();
     }
 
     public function show(Post $post) {

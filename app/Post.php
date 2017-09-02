@@ -25,7 +25,10 @@ class Post extends Model
         */
 
         //this post's comments => create a new one where 'body' is equal to what was passed in
-        $this->comments()->create(['body' => $body]);
+        $this->comments()->create([
+            'body' => $body,
+            'user_id' => $this->user->id
+        ]);
         //Long form way
 //        Comment::create([
 //            'post_id' => $this->id,

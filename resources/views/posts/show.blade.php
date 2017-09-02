@@ -5,10 +5,12 @@
         <h1>{{$post->title}}</h1>
         <hr>
         <p>{{$post->body}}</p>
+
         <p class="text-muted">Created by
             {{$post->user->name}}
             {{$post->created_at->diffForHumans()}}</p>
         <hr>
+
         <ul class="list-group">
             <div class="comments">
                 @foreach($post->comments as $comment)
@@ -27,7 +29,7 @@
             <div class="card">
                 <div class="card-block">
 
-                    <form action="{{$post->id}}/comments" method="post">
+                    <form action="/posts/{{$post->id}}/comments" method="post">
                         {{csrf_field()}}
                         <div class="form-group">
                             <textarea class="form-control" name="body" placeholder="Your comment here.." cols="55" rows="3"></textarea>

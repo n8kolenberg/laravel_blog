@@ -6,7 +6,7 @@
 
         <hr>
 
-        <form action="/posts" method="POST">
+        <form action="/posts" method="post">
             {{csrf_field()}}
             <div class="form-group">
                 <label for="title">Title of your post: </label>
