@@ -25,6 +25,8 @@ class SessionsController extends Controller
            ]);
        }
 
+       session()->flash('message', 'Awww Yeah! Welcome back!');
+
         //Redirect to the homepage
         return redirect()->home();
     }

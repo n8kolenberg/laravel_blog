@@ -16,6 +16,12 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function tags() {
+        //1 post can have many tags
+        //Any tag may be applied to a post
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function addComment($body) {
 
         /*$this->comments will gather the comments collection
@@ -52,10 +58,11 @@ class Post extends Model
 
     //Returns the archives based on the query you can see below
     public static function archives() {
-        return static::selectRaw('year(created_at) as year, monthName(created_at) as month,count(*) as published')
+        return static::selectRaw('year(created_at) as year, monthName(created_at) as month, count(*) as published')
             ->groupBy('year', 'month')
             ->orderByRaw('min(created_at) desc')
             ->get()
             ->toArray();
     }
+
 }

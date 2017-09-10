@@ -21,6 +21,14 @@
 
 <div class="blog-header">
     <div class="container">
+
+        @if($flash = session('message'))
+        <div id="post_flash" class="alert alert-success">
+            {{$flash}}
+        </div>
+        @endif
+
+
         <h1 class="blog-title">The Bootstrap Blog</h1>
         <p class="lead blog-description">An example blog template built with Bootstrap.</p>
        @if(Auth::check())

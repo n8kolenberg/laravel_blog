@@ -8,7 +8,19 @@
 
         <p class="text-muted">Created by
             {{$post->user->name}}
-            {{$post->created_at->diffForHumans()}}</p>
+            {{$post->created_at->diffForHumans()}}
+        </p>
+
+        @if(count($post->tags))
+            @foreach($post->tags as $tag)
+                <a href="/posts/tags/{{$tag->name}}">
+                    <button type="button" class="btn btn-outline-primary btn-sm">
+                        {{$tag->name}}
+                    </button>
+                </a>
+            @endforeach
+        @endif
+
         <hr>
 
         <ul class="list-group">

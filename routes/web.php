@@ -41,6 +41,10 @@ Route::post('/login', 'SessionsController@store');
 
 Route::get('/logout', 'SessionsController@destroy');
 
+
+Route::get('/posts/tags/{tag}', 'TagsController@index');
+
+
 //Controller => Plural => Posts
 //Eloquent Model => Singular => Post
 //Migration => create_posts_table

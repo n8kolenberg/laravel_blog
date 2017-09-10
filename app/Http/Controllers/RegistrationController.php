@@ -18,7 +18,7 @@ class RegistrationController extends Controller
     }
 
     public function store(RegistrationForm $form) {
-        //Validate form - I moved this to the RegistrationRequest Class
+        //Validate form - I moved this to the RegistrationForm Class
 //        $this->validate(request(), [
 //            'name' => 'required',
 //            'email' => 'required|email|unique:users',
@@ -41,6 +41,9 @@ class RegistrationController extends Controller
 //        \Mail::to($user)->send(new Welcome($user));
 
         $form->persist();
+        //Thank the user for signing up with a thank you flash message
+        session()->flash('message', 'Thanks for signing up!');
+
         //Redirect to homepage
         return redirect()->home();
     }

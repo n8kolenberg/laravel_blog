@@ -178,3 +178,34 @@ h6,
   margin-bottom: 0;
 }
 
+#post_flash {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 10;
+  -webkit-animation: post_flash 4s forwards;
+          animation: post_flash 4s forwards;
+}
+
+@-webkit-keyframes post_flash {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes post_flash {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+

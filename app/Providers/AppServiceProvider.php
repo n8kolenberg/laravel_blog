@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Post;
+use App\Tag;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,8 +21,11 @@ class AppServiceProvider extends ServiceProvider
          * Then I want to register a callback function where I can bind anything to that view
          **/
         view()->composer('layouts.sidebar', function($view){
-            /*We add a variable called archives and that is equal to the archives*/
-            $view->with('archives', \App\Post::archives());
+            /*We add a variable called archives and tags and those are equal to the archives and tags*/
+            $archives = Post::archives();
+            $tags = Tag::has('posts')->pluck('name');
+
+            $view->with(compact('archives', 'tags'));
         });
 
     }
