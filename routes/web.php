@@ -43,6 +43,7 @@ Route::get('/logout', 'SessionsController@destroy');
 
 
 Route::get('/posts/tags/{tag}', 'TagsController@index');
+Route::post('/posts/{post}/tags/', 'TagsController@store');
 
 
 //Controller => Plural => Posts

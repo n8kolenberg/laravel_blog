@@ -37,9 +37,26 @@
         </ul>
 
         <hr>
+
+
+
+
+
+
             {{-- Add a comment --}}
             <div class="card">
                 <div class="card-block">
+
+                    <form action="/posts/{{$post->id}}/tags" method="post">
+                        {{csrf_field()}}
+                        <div class="form-group">
+                            <input class="form-control" name="name" placeholder="Tagname....">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-primary">Add a tag</button>
+                        </div>
+                    </form>
 
                     <form action="/posts/{{$post->id}}/comments" method="post">
                         {{csrf_field()}}

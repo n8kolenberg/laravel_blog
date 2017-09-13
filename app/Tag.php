@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Tag extends Model
 {
     public function posts() {
@@ -12,7 +10,7 @@ class Tag extends Model
 
     /**
      * @return string
-     * This method will allow the user to use the tag name in the url instead of the id
+     * The following method will allow the user to use the tag name in the url instead of the id
      * and that will then return the data related to that tag via the id anyway
      * Normally we query the database using the tag id, but instead,
      * this function does a where on the name
@@ -24,4 +22,6 @@ class Tag extends Model
         //and get me the first result
         return 'name';
     }
+
+
 }

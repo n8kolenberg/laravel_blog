@@ -42,6 +42,12 @@ class Post extends Model
 //        ]);
     }
 
+    public function addTag($name) {
+        $this->tags()->create([
+            'name' => $name
+        ]);
+    }
+
     /*Accepts the current query and any additional filters coming from
     the PostsController*/
     public function scopeFilter($query, $filters) {
